@@ -2,6 +2,10 @@
 
 Repo includes completed howework.
 
-# Content
+## Content
     
-_Homework issn't finished_
+1. [HW03 rarjpeg detector](./HW03-rarjpeg)
+
+## Marks
+
+Code must be compiled without `warning's` whith compiler flags `-Wall -Wextra -Wpedantic -std=c11`
