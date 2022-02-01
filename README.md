@@ -4,7 +4,7 @@ Repo includes completed howework.
 
 ## Content
     
-1. [HW03 rarjpeg detector](./HW03-rarjpeg)
+1. [HW03 rarjpeg detector](./HW01-rarjpeg)
 
 ## Marks
 
