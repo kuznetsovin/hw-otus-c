@@ -1,20 +1,20 @@
-# HW03 
+# HW01 
 
 ## Description
 
-Create [Rarjpeg](https://lurkmore.to/Rarjpeg) file detector without external dependencies. If checking file is _rarjpeg_, then program must print all filenames from the archive to display.
+Create a program to determine if a file is a so-called Rarjpeg](https://lurkmore.to/Rarjpeg) (an image file with an embedded archive) and to print out a list of filenames in the archive in case the file is actually a Rarjpeg. 
 
-Instead of `rar` archive will be used `zip` archive in test images. 
+For simplicity a `zip` archive will be used instead of `rar`.
 
 ## Build
 
-For build program run command:
+To build the program run command:
 
 ```
 make
 ```
 
-If you want run test only use command:
+To run only the test, use command:
 
 ```
 make test
@@ -22,7 +22,7 @@ make test
 
 ## Usage
 
-For using program run command:
+To use the program run command:
 
 ```
 ./bin/zipjpeg [FILE]
