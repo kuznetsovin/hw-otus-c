@@ -2,7 +2,7 @@
 
 ## Description
 
-Create a program to determine if a file is a so-called Rarjpeg](https://lurkmore.to/Rarjpeg) (an image file with an embedded archive) and to print out a list of filenames in the archive in case the file is actually a Rarjpeg. 
+Create a program to determine if a file is a so-called [Rarjpeg](https://lurkmore.to/Rarjpeg) (an image file with an embedded archive) and to print out a list of filenames in the archive in case the file is actually a Rarjpeg. 
 
 For simplicity a `zip` archive will be used instead of `rar`.
 
