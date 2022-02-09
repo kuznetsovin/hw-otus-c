@@ -79,7 +79,7 @@ UtfFile encoding_to_utf8(char* encoding, char* input_file) {
     };
 
     result.size += sizeof(unsigned char);
-    result.content = realloc(result.content, result.size);
+    result.content = realloc(result.content, result.size + 1);
     result.content[result.size] = '\0';
 
     free(code_page);
