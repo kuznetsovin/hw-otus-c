@@ -22,6 +22,7 @@ void test_hash_map(void)
     TEST_ASSERT_EQUAL(0, hm_len(&map));
     TEST_ASSERT_EQUAL(0, hm_get(&map, "a"));
 
+    hm_set(&map, "b", 300);
     hm_clear(&map);
 }
 

@@ -9,9 +9,7 @@ typedef struct {
 typedef struct {
     Item*  data;
     size_t num_of_recs;
-
-    // fields for iteration by isn't null records
-    uint32_t* using_cells;
+    size_t size;
 } HashMap;
 
 HashMap hm_init();
