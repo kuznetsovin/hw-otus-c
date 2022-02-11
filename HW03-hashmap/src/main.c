@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
     Item* records = hm_iter(&hm);
     printf("Words stats:\n");
     for(size_t i =0; i < hm_len(&hm); i++) {
-        printf("\t%s: %llu\n", records[i].key, records[i].value);
+        printf("\t%s: %" PRId64 "\n", records[i].key, records[i].value);
     }
 
     hm_clear(&hm);

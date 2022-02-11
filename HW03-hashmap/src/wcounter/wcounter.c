@@ -20,7 +20,7 @@ HashMap get_word_stat(const char* file_path) {
 
     char word[100];
     uint64_t word_actual_count = 0;
-    while (fscanf(fp, "%s", word) != EOF) {
+    while (fscanf(fp, "%99s", word) != EOF) {
         word_actual_count = hm_get(&stats, word);
         word_actual_count += 1;
 

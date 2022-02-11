@@ -6,7 +6,7 @@
 
 // Init empty hashmap
 HashMap hm_init() {
-    HashMap map = { .data = NULL, .num_of_recs = 0, .using_cells = NULL};
+    HashMap map = { 0 };
 
     // Library used jenkins hash function which returns uint32 value, therefore
     // for hash table size may be got UINT32_MAX number of records
@@ -51,11 +51,7 @@ uint32_t hash(char* val) {
 void hm_set(HashMap* m, char* key, int64_t val) {
     Item item = { .key = NULL, .value = val };
 
-    size_t key_len = strlen(key);
-    item.key = calloc(key_len + 1, sizeof(char));
-    strcpy(item.key, key);
-    item.key[key_len] = '\0';
-
+    item.key = strdup(key);
 
     size_t hash_val = hash(key);
 
