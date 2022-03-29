@@ -161,7 +161,7 @@ int main(int argc, char *argv[]) {
     char *city = argv[1];
 
     char *api_url = calloc(URL_LEN, sizeof(char));
-    sprintf(api_url, "%ssearch/?query=%s", LOCATION_URL, city);
+    snprintf(api_url, URL_LEN, "%ssearch/?query=%s", LOCATION_URL, city);
 
     CURL *curl = curl_easy_init();
     if (!curl) {
@@ -184,11 +184,12 @@ int main(int argc, char *argv[]) {
 
     size_t location_id = extract_woeid(&resp);
 
+    free(resp.body);
     resp.body = NULL;
     resp.size = 0;
     memset(api_url, 0, URL_LEN);
 
-    sprintf(api_url, "%s%zu/", LOCATION_URL, location_id);
+    snprintf(api_url, URL_LEN, "%s%zu/", LOCATION_URL, location_id);
 
     curl_easy_setopt(curl, CURLOPT_URL, api_url);
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
@@ -204,6 +205,7 @@ int main(int argc, char *argv[]) {
     print_weather_today(&resp);
 
     curl_easy_cleanup(curl);
+    free(resp.body);
     free(api_url);
     return 0;
 }
