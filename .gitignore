@@ -55,3 +55,9 @@ dkms.conf
 
 cmake-build-debug
 .idea/*
+
+HW09-file-observer/test_client
+HW09-file-observer/file-observer
+HW09-file-observer/test.txt
+HW09-file-observer/sock.socket
+valgrind-out.txt
