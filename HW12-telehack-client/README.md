@@ -9,6 +9,8 @@ Create [https://telehack.com](https://telehack.com) client that print user messa
 To build the program run command:
 
 ```
+cmake3 .
+make
 ```
 
 ## Usage
