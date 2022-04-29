@@ -12,4 +12,5 @@ RUN set -x \
         gcc-c++ \
         openssl-devel \
         valgrind \
+        cmake3 \
     && cd /app
