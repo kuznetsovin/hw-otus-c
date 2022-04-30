@@ -13,4 +13,6 @@ RUN set -x \
         openssl-devel \
         valgrind \
         cmake3 \
+        gdb \
+        nasm \
     && cd /app
