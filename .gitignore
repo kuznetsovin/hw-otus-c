@@ -60,4 +60,19 @@ HW09-file-observer/test_client
 HW09-file-observer/file-observer
 HW09-file-observer/test.txt
 HW09-file-observer/sock.socket
+HW07-asm/asm/main.o
+HW07-asm/asm/asm-prog
 valgrind-out.txt
+
+### CMake template
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
