@@ -1,28 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
- * Finding structure is `stack`
- */
-
 static const size_t data[] = {4, 8, 15, 16, 23, 42,};
 static const char empty_str[] = {0x00};
 static const char int_format[] = "%ld ";
+
+typedef struct node {
+    size_t el;
+    struct node *prev;
+} node;
 
 size_t p(size_t el) {
     return el % 2;
 }
 
-size_t *add_element(size_t *stack, size_t el) {
-    size_t *new_cell = malloc(16);
-    if (!new_cell) {
+node *add_element(node *rec, size_t el) {
+    node *cur_node = malloc(16);
+    if (!cur_node) {
         abort();
     }
 
-    *new_cell = el;
-
-    *((size_t **) new_cell + 1) = stack;
-    return new_cell;
+    cur_node->el = el;
+    cur_node->prev = rec;
+    return cur_node;
 }
 
 void print_int(size_t el) {
@@ -31,34 +31,34 @@ void print_int(size_t el) {
 }
 
 // asm `m` function
-void m(const size_t *stack, void (*print_fn)(size_t)) {
-    if (!stack) {
+void m(node *list, void (*print_fn)(size_t)) {
+    if (!list) {
         return;
     }
 
-    print_fn(*stack);
-    m(*((size_t **) stack + 1), print_fn);
+    print_fn(list->el);
+    m(list->prev, print_fn);
 }
 
-size_t *f(const size_t *stack, size_t *odd_stack, size_t (*fn)(size_t)) {
-    if (!stack) {
-        return odd_stack;
+struct node *f(node *list, node *odd_list, size_t (*fn)(size_t)) {
+    if (!list) {
+        return odd_list;
     }
 
-    size_t el = *stack;
+    size_t el = list->el;
     size_t r = fn(el);
     if (r != 0) {
-        odd_stack = add_element(odd_stack, el);
+        odd_list = add_element(odd_list, el);
     }
 
-    return f(*((size_t **) stack + 1), odd_stack, fn);
+    return f(list->prev, odd_list, fn);
 }
 
-void free_stack(size_t *s) {
+void free_stack(node *s) {
     if (!s) {
         return;
     }
-    free_stack(*((size_t **) s + 1));
+    free_stack(s->prev);
     free(s);
 }
 
@@ -66,24 +66,24 @@ int main() {
     size_t data_length = sizeof(data) / sizeof(size_t);
     size_t i = data_length;
 
-    size_t *stack = NULL;
+    node *list = NULL;
 
     while (i > 0) {
-        stack = add_element(stack, data[i - 1]);
+        list = add_element(list, data[i - 1]);
         i--;
     };
 
-    m(stack, print_int);
+    m(list, print_int);
     puts(empty_str);
 
-    size_t *odd_stack = NULL;
-    odd_stack = f(stack, odd_stack, p);
+    node *odd_list = NULL;
+    odd_list = f(list, odd_list, p);
 
-    m(odd_stack, print_int);
+    m(odd_list, print_int);
     puts(empty_str);
 
-    free_stack(stack);
-    free_stack(odd_stack);
+    free_stack(list);
+    free_stack(odd_list);
 
     return 0;
 }
